@@ -2,6 +2,13 @@ import urllib
 import re
 import os
 
+htmlCodes = (
+            ("'", '&#39;'),
+            ('"', '&quot;'),
+            ('>', '&gt;'),
+            ('<', '&lt;'),
+            ('&', '&amp;')
+            )
 
 username=raw_input("Enter Username")
 url="https://www.codechef.com/users/"+username
@@ -35,15 +42,14 @@ for q in range(0,len(questions)):
                 sub_mem=html[i][5]
                 sub_lang=html[i][6]
                 file=open(username+"/"+questions[q]+"/"+sub_lang+"_"+sub_time+"_"+sub_mem+".txt", 'w')
-                subhtml="https://www.codechef.com/viewplaintext/"+sub_id
-                subhtml=urllib.urlopen(subhtml).read()
+                suburl="https://www.codechef.com/viewplaintext/"+sub_id
+                subhtml=urllib.urlopen(suburl).read()
                 while(len(subhtml)==0):
-                    subhtml=urllib.urlopen(subhtml).read()
+                    subhtml=urllib.urlopen(suburl).read()
                 subhtml=subhtml.split(">")[1]
                 subhtml=subhtml.split("<")[0]
-                subhtml=subhtml.replace('&gt;','>');
-                subhtml=subhtml.replace('&lt;','<');
-                subhtml=subhtml.replace('&quot;','""');
+                for code in htmlCodes:
+                    subhtml = subhtml.replace(code[1], code[0])
                 file.write(subhtml)
     except:
         print("Could not fetch question "+questions[q])
