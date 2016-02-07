@@ -2,12 +2,6 @@ import urllib
 import re
 import os
 
-file=open("hello.txt")
-print(len(file.read()))
-exit()
-
-
-
 ''' at the end while writing the txt file format is encoded so here we create htmlCodes so as to decode it '''
 htmlCodes = (
             ("'", '&#39;'),
