@@ -55,7 +55,7 @@ print("Created directory for user : "+username)
 
 for q in range(0,len(questions)):
     question_name=questions[q][1].split(","+username)[0]
-    print("Getting question:"+question_name+" "+(q+1)+"/"+totalquestions)
+    print("Getting question:"+question_name+" "+str(q+1)+"/"+str(totalquestions))
     url="https://www.codechef.com/"+questions[q][0]+"/status/"+questions[q][1]
     os.makedirs(username+"/"+questions[q][0]+"_"+question_name)
     flag=0  # to avoid internal sever error
