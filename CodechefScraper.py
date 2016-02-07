@@ -11,7 +11,7 @@ htmlCodes = (
             ('&', '&amp;')
             )
 
-username=raw_input("Enter Username")
+username=raw_input("Enter Username: ")
 
 url="https://www.codechef.com/users/"+username
 
@@ -92,6 +92,6 @@ for q in range(0,len(questions)):
             subhtml=subhtml.split("<")[0]
             for code in htmlCodes:
                 subhtml = subhtml.replace(code[1], code[0])
-                file.write(subhtml)
+            file.write(subhtml)
 
 print("All Done!")
