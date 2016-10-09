@@ -52,7 +52,6 @@ except:
 
 print("Created directory for user : "+username)
 
-
 for q in range(0,len(questions)):
     question_name=questions[q][1].split(","+username)[0]
     print("Getting question:"+question_name+" "+str(q+1)+"/"+str(totalquestions))
@@ -66,7 +65,7 @@ for q in range(0,len(questions)):
                 flag=1
         except:
             pass
-    html=html.split('<tr class="kol"') # all submission in table format
+    html=html.split('<tr class=\\"kol\\"') # all submission in table format
     for i in range(1,len(html)):
         html[i]=str(html[i])
         if("<img src='/misc/tick-icon.gif'>" in html[i]):  #if solution is accepted it contains tick-icon
